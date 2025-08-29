@@ -126,4 +126,4 @@ const close = async (browser: Browser): Promise<void> => {
   await browser.process.status;
 };
 
-export { close, launch };
+export { type Browser, close, launch };
