@@ -1,2 +1,2 @@
-export * from "./page.ts";
-export * from "./browser.ts";
+export * as Page from "./page.ts";
+export * as Browser from "./browser.ts";

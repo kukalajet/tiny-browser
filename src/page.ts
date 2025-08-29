@@ -45,7 +45,7 @@ interface ScreenshotOptions {
  * @param browser The browser instance to create the page in.
  * @returns A promise that resolves to the newly created page.
  */
-const newPage = async (browser: Browser): Promise<Page> => {
+const create = async (browser: Browser): Promise<Page> => {
   const { targetId } = await browser.client.sendCommand<{ targetId: string }>(
     "Target.createTarget",
     { url: "about:blank" },
@@ -129,10 +129,10 @@ const screenshot = async (
  * Closes a specific page (tab).
  * @param page The page to close.
  */
-const closePage = async (page: Page): Promise<void> => {
+const close = async (page: Page): Promise<void> => {
   await page.client.sendCommand("Target.closeTarget", {
     targetId: page.targetId,
   });
 };
 
-export { closePage, goto, newPage, screenshot };
+export { close, create, goto, screenshot };
