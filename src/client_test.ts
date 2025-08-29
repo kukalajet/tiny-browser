@@ -6,6 +6,7 @@ import {
   assertStrictEquals,
 } from "jsr:@std/assert";
 import { spy } from "jsr:@std/testing/mock";
+
 import { createClient } from "./client.ts";
 
 type AnyRecord = Record<string, unknown>;

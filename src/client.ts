@@ -8,7 +8,7 @@ interface CdpClient {
   sendCommand: <T = unknown>(
     method: string,
     params?: Record<string, unknown>,
-    sessionId?: string
+    sessionId?: string,
   ) => Promise<T>;
 
   /**
@@ -16,7 +16,7 @@ interface CdpClient {
    */
   on: (
     event: string,
-    callback: (params: Record<string, unknown>) => void
+    callback: (params: Record<string, unknown>) => void,
   ) => void;
 
   /**
@@ -80,7 +80,7 @@ const createClient = async (webSocketUrl: string): Promise<CdpClient> => {
     sendCommand: <T>(
       method: string,
       params: Record<string, unknown> = {},
-      sessionId?: string
+      sessionId?: string,
     ): Promise<T> => {
       if (ws.readyState !== WebSocket.OPEN) {
         return Promise.reject(new Error("WebSocket is not open"));
@@ -105,7 +105,7 @@ const createClient = async (webSocketUrl: string): Promise<CdpClient> => {
 
     on: (
       event: string,
-      callback: (params: Record<string, unknown>) => void
+      callback: (params: Record<string, unknown>) => void,
     ) => {
       if (!eventListeners.has(event)) {
         eventListeners.set(event, new Set());
@@ -127,4 +127,4 @@ const createClient = async (webSocketUrl: string): Promise<CdpClient> => {
   return client;
 };
 
-export { createClient };
+export { type CdpClient, createClient };
