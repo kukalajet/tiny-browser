@@ -129,10 +129,10 @@ const screenshot = async (
  * Closes a specific page (tab).
  * @param page The page to close.
  */
-const close = async (page: Page): Promise<void> => {
+const closePage = async (page: Page): Promise<void> => {
   await page.client.sendCommand("Target.closeTarget", {
     targetId: page.targetId,
   });
 };
 
-export { close, goto, newPage, screenshot };
+export { closePage, goto, newPage, screenshot };
