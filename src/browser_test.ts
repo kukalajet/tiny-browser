@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import { assert, assertEquals, assertRejects } from "jsr:@std/assert";
 import { close, launch } from "./browser.ts";
 
@@ -187,6 +188,7 @@ Deno.test("browser", async (t) => {
     async () => {
       let clientClosed = false;
       const fakeClient = {
+        // deno-lint-ignore require-await
         sendCommand: async () => undefined,
         on: () => {},
         close: () => {
